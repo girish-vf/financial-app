@@ -407,7 +407,7 @@ paths:
       description: "Route to add a partner"
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
               $ref: "#/components/schemas/Partner"
         required: true
@@ -452,7 +452,7 @@ paths:
             type: "string"
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
               $ref: "#/components/schemas/Partner"
         required: true

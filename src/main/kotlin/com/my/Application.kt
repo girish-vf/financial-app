@@ -27,6 +27,8 @@ fun Application.module() {
     configureSecurity()
     //configureRouting()
     productModule()
+    partnerModule()
+    //invoiceModule()
 
     routing {
         swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")

@@ -2988,7 +2988,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-partnersIdPut-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT\
 -H "Accept: */*"\
--H "Content-Type: */*"\
+-H "Content-Type: application/json"\
 "//partners/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-partnersIdPut-0-java">
@@ -3216,7 +3216,7 @@ except ApiException as e:
                                 $(document).ready(function() {
                                   var schemaWrapper = {
   "content" : {
-    "*/*" : {
+    "application/json" : {
       "schema" : {
         "$ref" : "#/components/schemas/Partner"
       }
@@ -3224,7 +3224,7 @@ except ApiException as e:
   },
   "required" : true
 };
-                                  var schema = schemaWrapper.content["*/*"].schema;
+                                  var schema = schemaWrapper.content["application/json"].schema;
                                   if (schema.$ref != null) {
                                     schema = defsParser.$refs.get(schema.$ref);
                                   } else {
@@ -3451,7 +3451,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-partnersPost-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
--H "Content-Type: */*"\
+-H "Content-Type: application/json"\
 "//partners"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-partnersPost-0-java">
@@ -3641,7 +3641,7 @@ except ApiException as e:
                                 $(document).ready(function() {
                                   var schemaWrapper = {
   "content" : {
-    "*/*" : {
+    "application/json" : {
       "schema" : {
         "$ref" : "#/components/schemas/Partner"
       }
@@ -3649,7 +3649,7 @@ except ApiException as e:
   },
   "required" : true
 };
-                                  var schema = schemaWrapper.content["*/*"].schema;
+                                  var schema = schemaWrapper.content["application/json"].schema;
                                   if (schema.$ref != null) {
                                     schema = defsParser.$refs.get(schema.$ref);
                                   } else {
