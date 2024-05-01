@@ -4,7 +4,7 @@ package com.my.models
 import kotlinx.serialization.Serializable
 @Serializable
 data class Transaction(
-    val _id: String? = null,
+    var _id: String? = null,
     val voucherNo: String,
     val type: String,
     val date: String,
