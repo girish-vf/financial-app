@@ -25,10 +25,11 @@ fun Application.module() {
     configureSerialization()
     configureHTTP()
     configureSecurity()
-    //configureRouting()
     productModule()
     partnerModule()
-    //invoiceModule()
+    invoiceModule()
+    ledgerModule()
+    transactionModule()
 
     routing {
         swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
