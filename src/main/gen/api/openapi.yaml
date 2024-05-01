@@ -1,0 +1,609 @@
+openapi: 3.1.0
+info:
+  description: com_my_financial_app API
+  title: com_my_financial_app API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /json/kotlinx-serialization:
+    get:
+      description: ""
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Map_String'
+          description: OK
+      x-accepts: '*/*'
+  /products:
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        "201":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Product created successfully
+              schema: {}
+          description: Created
+        "500":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Product creation failed
+              schema: {}
+          description: Internal Server Error
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid product data
+              schema: {}
+          description: Bad Request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /products/{id}:
+    get:
+      description: ""
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema: {}
+        style: simple
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema: {}
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Product'
+                type: array
+          description: OK
+        "404":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Product not found
+              schema: {}
+          description: Not Found
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid product data
+              schema: {}
+          description: Bad Request
+      x-accepts: '*/*'
+    put:
+      description: ""
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema: {}
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid product data
+                Example#2:
+                  value: Missing product id
+              schema: {}
+          description: Bad Request
+        "200":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Product updated successfully
+              schema: {}
+          description: OK
+        "404":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Product not found
+              schema: {}
+          description: Not Found
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /partners:
+    get:
+      description: ""
+      parameters:
+      - explode: true
+        in: query
+        name: id
+        required: false
+        schema: {}
+        style: form
+      - explode: true
+        in: query
+        name: type
+        required: false
+        schema: {}
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema: {}
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Partner'
+                type: array
+          description: OK
+        "404":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Partner not found for given id
+              schema: {}
+          description: Not Found
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid partner data
+              schema: {}
+          description: Bad Request
+      x-accepts: '*/*'
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner'
+        required: true
+      responses:
+        "201":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: ""
+              schema: {}
+          description: Created
+        "500":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Partner creation failed
+              schema: {}
+          description: Internal Server Error
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid partner data
+              schema: {}
+          description: Bad Request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /partners/{id}:
+    put:
+      description: ""
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema: {}
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner'
+        required: true
+      responses:
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid partner data
+                Example#2:
+                  value: Missing partner id
+              schema: {}
+          description: Bad Request
+        "200":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: ""
+              schema: {}
+          description: OK
+        "404":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Partner not found
+              schema: {}
+          description: Not Found
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /transactions:
+    get:
+      description: ""
+      parameters:
+      - explode: true
+        in: query
+        name: type
+        required: false
+        schema: {}
+        style: form
+      responses:
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid transaction data
+                Example#2:
+                  value: Invalid type
+                Example#3:
+                  value: Invalid type
+                Example#4:
+                  value: type is mandatory
+              schema: {}
+          description: Bad Request
+        "200":
+          content:
+            '*/*':
+              schema: {}
+          description: OK
+      x-accepts: '*/*'
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+        required: true
+      responses:
+        "201":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: ""
+              schema: {}
+          description: Created
+        "500":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Transaction creation failed
+              schema: {}
+          description: Internal Server Error
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid transaction data
+              schema: {}
+          description: Bad Request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /ledger:
+    get:
+      description: Route to get ledger items
+      parameters:
+      - explode: true
+        in: query
+        name: partnerId
+        required: false
+        schema: {}
+        style: form
+      - explode: true
+        in: query
+        name: startDate
+        required: false
+        schema: {}
+        style: form
+      - explode: true
+        in: query
+        name: endDate
+        required: false
+        schema: {}
+        style: form
+      responses:
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Missing end date
+                Example#2:
+                  value: Missing start date
+                Example#3:
+                  value: Missing Partner ID
+              schema: {}
+          description: Bad Request
+        "200":
+          content:
+            '*/*':
+              schema: {}
+          description: OK
+        "500":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Failed
+              schema: {}
+          description: Internal Server Error
+      x-accepts: '*/*'
+  /invoices:
+    get:
+      description: Route to get invoice(s)
+      parameters:
+      - explode: true
+        in: query
+        name: type
+        required: false
+        schema: {}
+        style: form
+      - explode: true
+        in: query
+        name: id
+        required: false
+        schema: {}
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema: {}
+          description: OK
+        "404":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invoice not found.
+                Example#2:
+                  value: Partner not found.
+              schema: {}
+          description: Not Found
+        "500":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Failed to retrieve invoice(s).
+              schema: {}
+          description: Internal Server Error
+      x-accepts: '*/*'
+    post:
+      description: Route to add an invoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+        required: true
+      responses:
+        "201":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invoice added successfully.
+              schema: {}
+          description: Created
+        "500":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Failed to add invoice.
+              schema: {}
+          description: Internal Server Error
+        "400":
+          content:
+            '*/*':
+              examples:
+                Example#1:
+                  value: Invalid data format.
+              schema: {}
+          description: Bad Request
+      x-content-type: application/json
+      x-accepts: '*/*'
+components:
+  schemas:
+    Map:
+      properties: {}
+    Map_String: {}
+    Product:
+      example:
+        notes: ""
+        rate: ""
+        coreCompany: ""
+        name: ""
+        taxExempted: ""
+        _id: ""
+        salesTax: ""
+        status: ""
+      properties:
+        _id: {}
+        name: {}
+        coreCompany: {}
+        rate: {}
+        status: {}
+        taxExempted: {}
+        salesTax: {}
+        notes: {}
+      required:
+      - coreCompany
+      - name
+      - notes
+      - rate
+      - salesTax
+      - status
+      - taxExempted
+    Partner:
+      example:
+        firstName: ""
+        lastName: ""
+        address: ""
+        repContact: ""
+        repName: ""
+        _id: ""
+        type: ""
+        openingBalance: ""
+        email: ""
+        repDesignation: ""
+        status: ""
+        contactNo: ""
+      properties:
+        _id: {}
+        type: {}
+        firstName: {}
+        lastName: {}
+        email: {}
+        status: {}
+        contactNo: {}
+        openingBalance: {}
+        address: {}
+        repName: {}
+        repContact: {}
+        repDesignation: {}
+      required:
+      - address
+      - contactNo
+      - email
+      - firstName
+      - lastName
+      - openingBalance
+      - repContact
+      - repDesignation
+      - repName
+      - status
+      - type
+    Transaction:
+      example:
+        voucherNo: ""
+        date: ""
+        reference: ""
+        receiptFrom: ""
+        amount: ""
+        paymentTo: ""
+        _id: ""
+        type: ""
+      properties:
+        _id: {}
+        voucherNo: {}
+        type: {}
+        date: {}
+        paymentTo: {}
+        receiptFrom: {}
+        amount: {}
+        reference: {}
+      required:
+      - amount
+      - date
+      - paymentTo
+      - receiptFrom
+      - reference
+      - type
+      - voucherNo
+    InvoiceItem:
+      properties:
+        productName: {}
+        quantity: {}
+        rate: {}
+        valueOfSupplies: {}
+        salesTax: {}
+        netAmount: {}
+      required:
+      - netAmount
+      - productName
+      - quantity
+      - rate
+      - salesTax
+      - valueOfSupplies
+    Invoice:
+      example:
+        reference: ""
+        invoiceItems: ""
+        dueDate: ""
+        creditTerm: ""
+        _id: ""
+        partnerId: ""
+        type: ""
+        invoiceDate: ""
+        invoiceNo: ""
+        invoiceTotal: ""
+      properties:
+        _id: {}
+        type: {}
+        invoiceDate: {}
+        dueDate: {}
+        invoiceNo: {}
+        partnerId: {}
+        creditTerm: {}
+        reference: {}
+        invoiceTotal: {}
+        invoiceItems:
+          items:
+            $ref: '#/components/schemas/InvoiceItem'
+      required:
+      - creditTerm
+      - dueDate
+      - invoiceDate
+      - invoiceItems
+      - invoiceNo
+      - invoiceTotal
+      - partnerId
+      - reference
+      - type
+

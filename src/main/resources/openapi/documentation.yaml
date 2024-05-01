@@ -5,18 +5,10 @@ info:
   version: "1.0.0"
 servers:
   - url: "/"
-paths:
-  /json/kotlinx-serialization:
-    get:
-      description: ""
-      responses:
-        "200":
-          description: "OK"
-          content:
-            '*/*':
-              schema:
-                $ref: "#/components/schemas/Map_String"
+security:
+  - basicAuth: []  # Add security requirement for basic authentication
 
+paths:
   /products:
     # Get Product(s)
     get:
